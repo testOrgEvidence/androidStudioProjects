@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ImageApp</string>
+    <string name="vertical">vertical</string>
+    <string name="horizontal">horizontal</string>
+    <string name="grid">grid</string>
+    <string name="dog_name"></string>
+    <string name="dog_age">age %s</string>
+    <string name="dog_hobby">Hobbies %s</string>
+    <string name="image">image</string>
+</resources>
