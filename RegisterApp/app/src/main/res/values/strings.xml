@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">RegisterApp</string>
+    <string name="heading">REGISTRATION FORM</string>
+    <string name="name"><b>NAME</b></string>
+    <string name="college"><b>COLLEGE</b></string>
+    <string name="contact_no"><b>PHONE NO</b></string>
+    <string name="email"><b>EMAIL</b></string>
+    <string name="gender"><b>GENDER</b></string>
+    <string name="state"><b>STATE</b></string>
+    <string name="backlogs"><b>ANY BACKLOGS?</b></string>
+    <string name="job_preference"><b>JOB PREFERENCE</b></string>
+    <string name="age"><b>AGE</b></string>
+    <string name="course"><b>COURSE</b></string>
+    <string name="full_name">Enter Full Name</string>
+    <string name="no_text" />
+    <string name="female">FEMALE</string>
+    <string name="male">MALE</string>
+    <string name="other">OTHER</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="internship"><b>Apply for  internship ?</b></string>
+    <string name="submit">SUBMIT</string>
+    <string name="welcome_note"><b>WELCOME %s</b></string>
+    <string name="user_data"><b>USER DATA</b></string>
+    <string name="backlog"><b>BACKLOG</b></string>
+
+</resources>
