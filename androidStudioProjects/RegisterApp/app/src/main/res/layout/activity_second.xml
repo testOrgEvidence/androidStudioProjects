@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context=".SecondActivity">
+
+    <TextView
+        android:id="@+id/txtWelcomeNote"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="@string/welcome_note"
+        android:textSize="24sp"
+        app:fontFamily="@font/amarante" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="531dp"
+        android:background="@color/background2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txtUName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/name"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtUCollege"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/college"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtUCourse"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/course"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtUAge"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/age"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtUEmail"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/email"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtUPhoneNo"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/contact_no"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtUState"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/state"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtUGender"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/gender"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtBacklogs"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/backlog"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtPreference"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/job_preference"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="265dp"
+            android:layout_height="402dp"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="3dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txtUserName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/no_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtUserCollege"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/no_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtUserCourse"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/no_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtUserAge"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/no_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtUserEmail"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/no_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtUserPhoneNo"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/no_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtUserState"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/no_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtUserGender"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/no_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtUserBacklog"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/no_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtUserJobPreference"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/no_text"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

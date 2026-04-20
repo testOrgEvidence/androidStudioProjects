@@ -1,0 +1,1 @@
+new readme document added for better readability 
