@@ -3,6 +3,11 @@ package com.example.quizapp.util
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.quizapp.model.Difficulty
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+
+data class ScoreEntry(val difficulty: String, val percentage: Int, val date: String)
 
 class ScoreManager(context: Context) {
 
@@ -18,6 +23,7 @@ class ScoreManager(context: Context) {
         }
         incrementGamesPlayed()
         addToTotalCorrect(score)
+        addHistoryEntry(difficulty, percentage)
     }
 
     fun getHighScore(difficulty: Difficulty): Int {
@@ -43,8 +49,30 @@ class ScoreManager(context: Context) {
         }
     }
 
+    fun getHistory(): List<ScoreEntry> {
+        val raw = prefs.getString("history", "") ?: ""
+        if (raw.isEmpty()) return emptyList()
+
+        return raw.split("|").mapNotNull { entry ->
+            val parts = entry.split(",")
+            if (parts.size == 3) {
+                ScoreEntry(parts[0], parts[1].toIntOrNull() ?: 0, parts[2])
+            } else null
+        }.sortedByDescending { it.percentage }
+    }
+
     fun resetAllScores() {
         prefs.edit().clear().apply()
+    }
+
+    private fun addHistoryEntry(difficulty: Difficulty, percentage: Int) {
+        val date = SimpleDateFormat("MMM dd", Locale.getDefault()).format(Date())
+        val entry = "${difficulty.name},$percentage,$date"
+        val existing = prefs.getString("history", "") ?: ""
+        val updated = if (existing.isEmpty()) entry else "$existing|$entry"
+        // Keep last 20 entries max
+        val trimmed = updated.split("|").takeLast(20).joinToString("|")
+        prefs.edit().putString("history", trimmed).apply()
     }
 
     private fun incrementGamesPlayed() {
