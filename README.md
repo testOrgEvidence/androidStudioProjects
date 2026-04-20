@@ -9,6 +9,7 @@ A collection of Android applications built with Kotlin.
 | DiceRoller | Simple dice rolling app |
 | GreetingApp | Basic greeting application |
 | ImageApp | Image display application |
+| QuizApp | Multiple choice quiz application |
 | RecyclerDemo | RecyclerView demonstration |
 | RegisterApp | User registration form |
 | RetrofitDemo | Retrofit API integration demo |

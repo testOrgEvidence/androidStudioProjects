@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    tools:context=".MainActivity">
+
+    <!-- MENU SCREEN -->
+    <LinearLayout
+        android:id="@+id/menuLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🧠 Quiz App"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="#6200EE"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Difficulty"
+            android:textSize="18sp"
+            android:textColor="#666666"
+            android:layout_marginBottom="24dp" />
+
+        <Button
+            android:id="@+id/btnEasy"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="🟢 Easy"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            app:backgroundTint="#4CAF50" />
+
+        <Button
+            android:id="@+id/btnMedium"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="🟡 Medium"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            app:backgroundTint="#FF9800" />
+
+        <Button
+            android:id="@+id/btnHard"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="🔴 Hard"
+            android:textSize="16sp"
+            android:layout_marginBottom="24dp"
+            app:backgroundTint="#F44336" />
+
+        <Button
+            android:id="@+id/btnStats"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="📊 Stats"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            app:backgroundTint="#9C27B0" />
+
+        <Button
+            android:id="@+id/btnLeaderboard"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="🏆 Leaderboard"
+            android:textSize="16sp"
+            android:layout_marginBottom="24dp"
+            app:backgroundTint="#00796B" />
+
+        <TextView
+            android:id="@+id/tvHighScores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="High Scores:"
+            android:textSize="14sp"
+            android:textColor="#888888"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- QUIZ SCREEN -->
+    <LinearLayout
+        android:id="@+id/quizLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/tvTimer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="⏱ 15s"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#D32F2F" />
+
+            <TextView
+                android:id="@+id/tvScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Score: 0"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#6200EE" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginBottom="8dp"
+            android:progressTint="#6200EE"
+            android:progressBackgroundTint="#E0E0E0" />
+
+        <TextView
+            android:id="@+id/tvQuestionNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Q1/5 • SCIENCE"
+            android:textSize="13sp"
+            android:textColor="#999999"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/tvQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Question"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginBottom="24dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp">
+
+            <RadioButton
+                android:id="@+id/rbOption1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/rbOption2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/rbOption3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/rbOption4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:textSize="16sp" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="NEXT"
+            android:textSize="16sp"
+            app:backgroundTint="#6200EE" />
+    </LinearLayout>
+
+</FrameLayout>
