@@ -1,5 +1,6 @@
 package com.example.quizapp
 
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -10,14 +11,17 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
-    private val questions = listOf(
+    private val allQuestions = listOf(
         Question("What is the capital of France?", listOf("Berlin", "Paris", "Madrid", "Rome"), 1),
         Question("Which planet is known as the Red Planet?", listOf("Venus", "Jupiter", "Mars", "Saturn"), 2),
         Question("What is 7 x 8?", listOf("54", "56", "58", "64"), 1),
         Question("Who wrote Romeo and Juliet?", listOf("Dickens", "Shakespeare", "Austen", "Twain"), 1),
-        Question("What is the largest ocean?", listOf("Atlantic", "Indian", "Arctic", "Pacific"), 3)
+        Question("What is the largest ocean?", listOf("Atlantic", "Indian", "Arctic", "Pacific"), 3),
+        Question("What is the chemical symbol for water?", listOf("O2", "H2O", "CO2", "NaCl"), 1),
+        Question("Which country has the most population?", listOf("USA", "India", "China", "Brazil"), 1)
     )
 
+    private lateinit var questions: List<Question>
     private var currentIndex = 0
     private var score = 0
 
@@ -46,6 +50,7 @@ class MainActivity : AppCompatActivity() {
             btnNext.text = if (currentIndex == questions.size - 1) "FINISH" else "NEXT"
         }
 
+        resetQuiz()
         loadQuestion()
 
         btnNext.setOnClickListener {
@@ -74,12 +79,31 @@ class MainActivity : AppCompatActivity() {
                 currentIndex++
                 loadQuestion()
             } else {
-                tvQuestion.text = "Quiz Complete!\nYour Score: $score / ${questions.size}"
-                tvScore.text = "Final Score: $score / ${questions.size}"
-                radioGroup.removeAllViews()
-                btnNext.isEnabled = false
+                showResultDialog()
             }
         }
+    }
+
+    private fun resetQuiz() {
+        questions = allQuestions.shuffled().take(5)
+        currentIndex = 0
+        score = 0
+    }
+
+    private fun showResultDialog() {
+        val message = when {
+            score == questions.size -> "Perfect! You got all correct!"
+            score >= questions.size / 2 -> "Good job! You passed!"
+            else -> "Keep practicing!"
+        }
+
+        AlertDialog.Builder(this)
+            .setTitle("Quiz Complete")
+            .setMessage("$message\nScore: $score / ${questions.size}")
+            .setPositiveButton("Play Again") { _, _ -> recreate() }
+            .setNegativeButton("Exit") { _, _ -> finish() }
+            .setCancelable(false)
+            .show()
     }
 }
 
