@@ -3,7 +3,9 @@ package com.example.quizapp
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
@@ -24,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var questions: List<Question>
     private var currentIndex = 0
     private var score = 0
+    private var timer: CountDownTimer? = null
+    private val timePerQuestion = 15000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,8 +54,34 @@ class MainActivity : AppCompatActivity() {
             btnNext.text = if (currentIndex == questions.size - 1) "FINISH" else "NEXT"
         }
 
+        val tvTimer = findViewById<TextView>(R.id.tvTimer)
+        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+        progressBar.max = questions.size
+
+        fun startTimer() {
+            timer?.cancel()
+            timer = object : CountDownTimer(timePerQuestion, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    tvTimer.text = "⏱ ${millisUntilFinished / 1000}s"
+                }
+                override fun onFinish() {
+                    tvTimer.text = "⏱ Time's up!"
+                    Toast.makeText(this@MainActivity, "Time's up!", Toast.LENGTH_SHORT).show()
+                    if (currentIndex < questions.size - 1) {
+                        currentIndex++
+                        loadQuestion()
+                        startTimer()
+                    } else {
+                        showResultDialog()
+                    }
+                }
+            }.start()
+        }
+
         resetQuiz()
+        progressBar.progress = 1
         loadQuestion()
+        startTimer()
 
         btnNext.setOnClickListener {
             val selectedId = radioGroup.checkedRadioButtonId
@@ -77,8 +107,11 @@ class MainActivity : AppCompatActivity() {
 
             if (currentIndex < questions.size - 1) {
                 currentIndex++
+                progressBar.progress = currentIndex + 1
                 loadQuestion()
+                startTimer()
             } else {
+                timer?.cancel()
                 showResultDialog()
             }
         }
@@ -90,11 +123,18 @@ class MainActivity : AppCompatActivity() {
         score = 0
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        timer?.cancel()
+    }
+
     private fun showResultDialog() {
+        val percentage = (score * 100) / questions.size
         val message = when {
-            score == questions.size -> "Perfect! You got all correct!"
-            score >= questions.size / 2 -> "Good job! You passed!"
-            else -> "Keep practicing!"
+            score == questions.size -> "🏆 Perfect! You got all correct!"
+            percentage >= 80 -> "🌟 Excellent work!"
+            percentage >= 50 -> "👍 Good job! You passed!"
+            else -> "📚 Keep practicing!"
         }
 
         AlertDialog.Builder(this)
